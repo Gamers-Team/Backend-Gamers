@@ -6,12 +6,14 @@ const PORT=3001;
 const cors=require('cors');
 app.use(cors())
 
+const mainPageRoute = require('./ Modules/Home')
 
 app.get('/',homeRoute)
 function homeRoute(req,res){
 res.send("Welcome to our Backend Sever ")
 }
 
+app.get('/Home',mainPageRoute)
 
 
 
