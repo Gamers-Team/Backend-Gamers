@@ -19,6 +19,6 @@
 
 ## Credit and Collaborations
 
-Firstly To our Teacher and TAs thoese help us during the Coures.
-Secondly for ASAC to give us this opportunity.
-Thirdly For our Families who support us all the Time.
++ Firstly To our Teacher and TAs thoese help us during the Coures.
++ Secondly for ASAC to give us this opportunity.
++ Thirdly For our Families who support us all the Time.
