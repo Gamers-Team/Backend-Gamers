@@ -1,21 +1,28 @@
-'use stric'
-require('dotenv').config();
-const express=require('express');
-const app=express();
-const PORT=3001;
-const cors=require('cors');
-app.use(cors())
+"use stric";
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const server = express();
+server.use(cors());
+
+const gamesFunc = require("./ Modules/Games");
+
+const PORT = process.env.PORT;
 
 
-app.get('/',homeRoute)
-function homeRoute(req,res){
-res.send("Welcome to our Backend Sever ")
+server.get("/", homeRoute);
+function homeRoute(req, res) {
+  res.send("Welcome to our Backend Sever ");
 }
 
 
+//localhost:3001/games
+server.get("/games", gamesFunc);
 
+server.get("*", (req, res) => {
+  res.status(404).send("sorry, this page not found");
+});
 
-app.listen(PORT,()=>{
-    console.log(`listening On Port ${PORT}`);
-})
-
+server.listen(PORT, () => {
+  console.log(`listening On Port ${PORT}`);
+});
