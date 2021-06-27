@@ -47,7 +47,6 @@ const wishSchema = new mongoose.Schema({
 
 function handleWishList(req,res){
     let email=req.query.email
-  
 
     myUserModel.find({ email: email }, function (err, userData) {
         if (err) {
