@@ -2,12 +2,6 @@ const axios = require("axios");
 
 class Data {
   constructor(item) {
-    // this.thumbnail = item.thumbnail;
-    // this.title = item.title;
-    // this.description = item.description;
-    // this.worth = item.worth;
-    // this.status = item.status;
-    // this.platforms = item.platforms;
     this.name = item.name;
     this.released = item.released;
     this.background_image = item.background_image;
@@ -30,10 +24,11 @@ class Data {
 function gamesFunc(req, res) {
   // https://www.gamerpower.com/api/giveaways?type=game
   // let url = `https://www.gamerpower.com/api/giveaways`;
+  console.log(req.body)
   let key = process.env.KEY;
   // let parameter = req.query.parameter;
   // let keyWord = req.query.keyWord;
-  let url = `https://api.rawg.io/api/games?key=${key}`;
+  let url = `https://api.rawg.io/api/games?key=${key}&page_size=40`;
 
   axios.get(url).then((response) => {
     let result = response.data.results.map((item) => {
@@ -41,6 +36,7 @@ function gamesFunc(req, res) {
     });
     res.send(result);
   });
+ 
 }
 
 module.exports = gamesFunc;
