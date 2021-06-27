@@ -26,8 +26,8 @@ function gamesFunc(req, res) {
   // let url = `https://www.gamerpower.com/api/giveaways`;
  
   let key = process.env.KEY;
-  let keyword = req.query.keyword.toLowerCase();
-  let searchBy = req.query.searchBy.toLowerCase();
+  let keyword = (req.query.keyword).toLowerCase();
+  let searchBy = (req.query.searchBy).toLowerCase();
   console.log(keyword,searchBy);
   let url = `https://api.rawg.io/api/games?key=${key}&page_size=40&${searchBy}=${keyword}`;
 
