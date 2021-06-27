@@ -8,21 +8,32 @@ const cors=require('cors');
 app.use(cors())
 const PORT=3001;
 const URI=process.env.MONGODB
-mongoose.connect("mongodb://localhost:27017/game", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb://localhost:27017/nice", {useNewUrlParser: true, useUnifiedTopology: true});
 const{
     handleWishList,
-    
-}=require('./ Modules/wishlist')
+    handleAddWishlist,
+    handleRemoveWishList,  
+    handleCart,
+    handleAddCart,
+    handleRemoveCart,
+}=require('./ Modules/wishlist');
 
 
+/// This for Wish List Items 
+app.get('/',homeRoute);
+app.post('/addTowishList',handleAddWishlist);
+app.get('/wishlist',handleWishList);
+app.delete('/remove',handleRemoveWishList);
 
+/// This for  Cart Item
 
-app.get('/',homeRoute)
-app.get('/wishlist',handleWishList)
+app.get('/cart',handleCart);
+app.post('/addToCart',handleAddCart)
+app.delete('/removecart',handleRemoveCart)
 
 function homeRoute(req,res){
 res.send("Welcome to our Backend Sever ")
-}
+};
 
 const gamesFunc = require("./ Modules/Games");
 

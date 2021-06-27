@@ -28,7 +28,7 @@ function gamesFunc(req, res) {
   let key = process.env.KEY;
   let keyword = (req.query.keyword).toLowerCase();
   let searchBy = (req.query.searchBy).toLowerCase();
-  console.log(keyword,searchBy);
+  // console.log(keyword,searchBy);
   let url = `https://api.rawg.io/api/games?key=${key}&page_size=40&${searchBy}=${keyword}`;
 
   axios.get(url).then((response) => {
