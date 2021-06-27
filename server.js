@@ -24,10 +24,15 @@ function homeRoute(req,res){
 res.send("Welcome to our Backend Sever ")
 }
 
+const gamesFunc = require("./ Modules/Games");
 
+//localhost:3001/games
+app.get("/games", gamesFunc);
 
+app.get("*", (req, res) => {
+  res.status(404).send("sorry, this page not found");
+});
 
-app.listen(PORT,()=>{
-    console.log(`listening On Port ${PORT}`);
-})
-
+app.listen(PORT, () => {
+  console.log(`listening On Port ${PORT}`);
+});
