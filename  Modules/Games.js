@@ -3,11 +3,13 @@ const axios = require("axios");
 class Data {
   constructor(item) {
     this.name = item.name;
+    this.id=item.id
     this.released = item.released;
     this.background_image = item.background_image;
     this.rating = item.rating;
     this.ratings_count = item.ratings_count;
     this.updated = item.updated;
+    this.feedback=[];
     this.playtime = item.playtime;
     this.short_screenshots = item.short_screenshots.map((short_screenshots) => {
       return short_screenshots.image;
@@ -21,6 +23,13 @@ class Data {
   }
 }
 
+
+
+
+
+
+
+
 function gamesFunc(req, res) {
   // https://www.gamerpower.com/api/giveaways?type=game
   // let url = `https://www.gamerpower.com/api/giveaways`;
@@ -28,6 +37,7 @@ function gamesFunc(req, res) {
   let key = process.env.KEY;
   let keyword = (req.query.keyword).toLowerCase();
   let searchBy = (req.query.searchBy).toLowerCase();
+
   // console.log(keyword,searchBy);
   let url = `https://api.rawg.io/api/games?key=${key}&page_size=40&${searchBy}=${keyword}`;
 
@@ -35,6 +45,13 @@ function gamesFunc(req, res) {
     let result = response.data.results.map((item) => {
       return new Data(item);
     });
+    
+    // let id=13537;
+    // let arr=[4,5,6]
+    // result.map((item)=>{
+    //   return( Number(item.id)===id ? item.feedback=[...arr] : item.feedback=[])
+    // })
+
     res.send(result);
   })
   .catch((err)=>{
