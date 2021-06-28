@@ -18,6 +18,10 @@ const{
     handleRemoveCart,
 }=require('./ Modules/wishlist');
 
+const {
+  gamesFunc,
+  addfeedback,
+} = require("./ Modules/Games");
 
 /// This for Wish List Items 
 app.get('/',homeRoute);
@@ -35,10 +39,10 @@ function homeRoute(req,res){
 res.send("Welcome to our Backend Sever ")
 };
 
-const gamesFunc = require("./ Modules/Games");
 
 //localhost:3001/games
 app.get("/games", gamesFunc);
+app.post("/addfeedback", addfeedback);
 
 app.get("*", (req, res) => {
   res.status(404).send("sorry, this page not found");

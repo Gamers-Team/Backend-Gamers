@@ -1,5 +1,12 @@
 const axios = require("axios");
 
+
+module.exports = {
+  gamesFunc,
+  addfeedback,
+} ;
+
+
 class Data {
   constructor(item) {
     this.name = item.name;
@@ -24,9 +31,17 @@ class Data {
 }
 
 
+let arrayOfFeedback=[]
 
-
-
+function addfeedback(req,res){
+  let { username, feedback, id } = req.body;
+  arrayOfFeedback.push({
+    username:username,
+    feedback:feedback,
+    id:id,
+  })
+  console.log(arrayOfFeedback);
+}
 
 
 
@@ -45,12 +60,19 @@ function gamesFunc(req, res) {
     let result = response.data.results.map((item) => {
       return new Data(item);
     });
-    
-    // let id=13537;
-    // let arr=[4,5,6]
-    // result.map((item)=>{
-    //   return( Number(item.id)===id ? item.feedback=[...arr] : item.feedback=[])
-    // })
+
+    result.map((item)=>{
+    arrayOfFeedback.forEach((feed)=>{
+      // return( Number(item.id)===Number(feed.id) ? item.feedback.push(feed.feedback) : item.feedback=[]);
+      if(Number(item.id)===Number(feed.id)){
+        
+        item.feedback.push(feed.feedback)
+
+      }
+
+
+    })
+    })
 
     res.send(result);
   })
@@ -61,4 +83,4 @@ function gamesFunc(req, res) {
  
 }
 
-module.exports = gamesFunc;
+
