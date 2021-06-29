@@ -17,6 +17,7 @@ class Data {
     this.ratings_count = item.ratings_count;
     this.updated = item.updated;
     this.feedback=[];
+    this.username=[];
     this.playtime = item.playtime;
     this.short_screenshots = item.short_screenshots.map((short_screenshots) => {
       return short_screenshots.image;
@@ -67,7 +68,7 @@ function gamesFunc(req, res) {
       if(Number(item.id)===Number(feed.id)){
         
         item.feedback.push(feed.feedback)
-
+        item.username.push(feed.username)
       }
 
 
