@@ -17,6 +17,8 @@ class Data {
     this.ratings_count = item.ratings_count;
     this.updated = item.updated;
     this.feedback=[];
+    this.flagecart=true;
+    this.falgewishlist=true;
     this.username=[];
     this.playtime = item.playtime;
     this.short_screenshots = item.short_screenshots.map((short_screenshots) => {
@@ -36,11 +38,13 @@ let arrayOfFeedback=[]
 
 function addfeedback(req,res){
   let { username, feedback, id } = req.body;
+
   arrayOfFeedback.push({
     username:username,
     feedback:feedback,
     id:id,
   })
+
   console.log(arrayOfFeedback);
 }
 
@@ -55,7 +59,7 @@ function gamesFunc(req, res) {
   let searchBy = (req.query.searchBy).toLowerCase();
 
   // console.log(keyword,searchBy);
-  let url = `https://api.rawg.io/api/games?key=${key}&page_size=40&${searchBy}=${keyword}`;
+  let url = `https://api.rawg.io/api/games?key=${key}&page_size=15&${searchBy}=${keyword}`;
 
   axios.get(url).then((response) => {
     let result = response.data.results.map((item) => {
