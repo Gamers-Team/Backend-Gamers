@@ -6,9 +6,9 @@ app.use(express.json());
 const mongoose = require('mongoose');
 const cors=require('cors');
 app.use(cors())
-const PORT=3001;
+const PORT=process.env.PORT;
 const URI=process.env.MONGODB
-mongoose.connect("mongodb://localhost:27017/nice", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(URI, {useNewUrlParser: true, useUnifiedTopology: true});
 const{
     handleWishList,
     handleAddWishlist,
@@ -44,9 +44,9 @@ res.send("Welcome to our Backend Sever ")
 app.get("/games", gamesFunc);
 app.post("/addfeedback", addfeedback);
 
-app.get("*", (req, res) => {
-  res.status(404).send("sorry, this page not found");
-});
+// app.get("*", (req, res) => {
+//   res.status(404).send("sorry, this page not found");
+// });
 
 app.listen(PORT, () => {
   console.log(`listening On Port ${PORT}`);
