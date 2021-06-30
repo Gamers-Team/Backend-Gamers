@@ -75,7 +75,6 @@ function gamesFunc(req, res) {
         item.username.push(feed.username)
       }
 
-
     })
     })
 
