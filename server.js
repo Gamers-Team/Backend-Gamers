@@ -22,6 +22,7 @@ const {
   gamesFunc,
   addfeedback,
   getNews,
+  changingPlat,
 } = require("./ Modules/Games");
 
 /// This for Wish List Items 
@@ -48,6 +49,7 @@ app.post("/addfeedback", addfeedback);
 
 //localhost:3001/news
 app.get('/news',getNews)
+app.get('/platform',changingPlat)
 
 
 
