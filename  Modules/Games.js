@@ -5,6 +5,7 @@ module.exports = {
   gamesFunc,
   addfeedback,
   getNews,
+  changingPlat,
 } ;
 
 
@@ -66,6 +67,23 @@ function getNews(req,res){
         
     })
 }
+
+
+ function changingPlat(req,res){
+  
+   const plateform=req.query.plateform
+  console.log('test',plateform);
+
+  const url = `https://newsapi.org/v2/everything?domains=gameinformer.com,destructoid.com&q=${plateform}&sortBy=popularity&apiKey=3c9471ccb160424d9d34f0326977cc88`;
+ 
+  axios.get(url).then(news=>{
+
+    res.send(news.data.articles)
+  })
+
+ }
+
+
 
 
 
