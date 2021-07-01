@@ -4,6 +4,7 @@ const axios = require("axios");
 module.exports = {
   gamesFunc,
   addfeedback,
+  getNews,
 } ;
 
 
@@ -45,7 +46,25 @@ function addfeedback(req,res){
     id:id,
   })
 
-  console.log(arrayOfFeedback);
+}
+
+
+
+
+function getNews(req,res){
+
+  console.log('test');
+
+  const url=`https://newsapi.org/v2/everything?domains=gameinformer.com,destructoid.com&q=games%20And%20gaming&sortBy=popularity&apiKey=3c9471ccb160424d9d34f0326977cc88`;
+    axios.get(url).then(news=>{
+
+      res.send(news.data.articles)
+    })
+
+    .catch((err)=>{
+      res.send(err)
+        
+    })
 }
 
 

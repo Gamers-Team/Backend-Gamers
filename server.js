@@ -21,6 +21,7 @@ const{
 const {
   gamesFunc,
   addfeedback,
+  getNews,
 } = require("./ Modules/Games");
 
 /// This for Wish List Items 
@@ -43,6 +44,12 @@ res.send("Welcome to our Backend Sever ")
 //localhost:3001/games
 app.get("/games", gamesFunc);
 app.post("/addfeedback", addfeedback);
+
+
+//localhost:3001/news
+app.get('/news',getNews)
+
+
 
 // app.get("*", (req, res) => {
 //   res.status(404).send("sorry, this page not found");
